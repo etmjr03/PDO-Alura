@@ -7,7 +7,11 @@
 * também pode passar um parâmetro personalizado de informação extra
 */
 
-// instaância do PDO, pode passar 3 parâmetros
-$pdo = new PDO('sqlite:banco.sqlite');
+// instância do PDO, pode passar 3 parâmetros
+$caminhoBanco = __DIR__.'./banco.sqlite';
+$pdo = new PDO('sqlite:' . $caminhoBanco);
 
 echo 'Conectado!';
+
+// executando uma query para criar um banco de dados 'students' no banco sqlite
+$pdo->exec('CREATE TABLE students (id INTEGER PRIMARY KEY, name TEXT, birth_date TEXT);');
